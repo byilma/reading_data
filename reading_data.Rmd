@@ -140,3 +140,21 @@ brfss_2019 =
 
 
 
+#Some data aren't so nice to download - need some work
+```{r}
+pokemon_data = 
+  GET("https://pokeapi.co/api/v2/pokemon/1") %>% 
+  content()
+
+
+pokemon_data$name
+
+pokemon_data$abilities
+```
+
+
+
+Some closing thoughts: 
+- 1 - easy to make requests from an API that are not reasonable
+- 2 - makes more sense to just download data in stead of requesting it from an API each time you're working with that dataset ... you may cause the server hosting the API to crash
+- 3 - 

@@ -104,3 +104,56 @@ brfss_2019 =
       query = list("$limit" = 5000)) %>% 
   content("parsed")
 ```
+
+\#Some data aren’t so nice to download - need some work
+
+``` r
+pokemon_data = 
+  GET("https://pokeapi.co/api/v2/pokemon/1") %>% 
+  content()
+
+
+pokemon_data$name
+```
+
+    ## [1] "bulbasaur"
+
+``` r
+pokemon_data$abilities
+```
+
+    ## [[1]]
+    ## [[1]]$ability
+    ## [[1]]$ability$name
+    ## [1] "overgrow"
+    ## 
+    ## [[1]]$ability$url
+    ## [1] "https://pokeapi.co/api/v2/ability/65/"
+    ## 
+    ## 
+    ## [[1]]$is_hidden
+    ## [1] FALSE
+    ## 
+    ## [[1]]$slot
+    ## [1] 1
+    ## 
+    ## 
+    ## [[2]]
+    ## [[2]]$ability
+    ## [[2]]$ability$name
+    ## [1] "chlorophyll"
+    ## 
+    ## [[2]]$ability$url
+    ## [1] "https://pokeapi.co/api/v2/ability/34/"
+    ## 
+    ## 
+    ## [[2]]$is_hidden
+    ## [1] TRUE
+    ## 
+    ## [[2]]$slot
+    ## [1] 3
+
+Some closing thoughts: - 1 - easy to make requests from an API that are
+not reasonable - 2 - makes more sense to just download data in stead of
+requesting it from an API each time you’re working with that dataset …
+you may cause the server hosting the API to crash - 3 -
